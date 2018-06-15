@@ -55,12 +55,13 @@
 \newcommand{\professor}{Rafael Cardoso}
 \newcommand{\data}{26/03/2018}
 \newcommand{\disciplina}{ELE0701 - ELETRÔNICA}
-\newcommand{\compA}{Cassio Fonseca Baracho}
-\newcommand{\matrA}{20170149830}
-\newcommand{\compB}{Josiel Patricio Pereira de Oliveira}
-\newcommand{\matrB}{20180010388}
-\newcommand{\compC}{Wesley Wagner Varela Souza}
-\newcommand{\matrC}{2015012638}
+\newcommand{\compA}{Josiel Patricio Pereira de Oliveira}
+\newcommand{\matrA}{20180010388}
+\newcommand{\compB}{Wesley Wagner Varela Souza}
+\newcommand{\matrB}{2015012638}
+% \newcommand{\compC}{Cassio Fonseca Baracho}
+% \newcommand{\matrC}{20170149830}
+
 %ATE AQUI !!!
 
 \begin{document}
@@ -94,7 +95,7 @@
 	Componentes:         & \begin{tabular}{r|l}
 	\matrA & \compA\\
 	\matrB & \compB\\
-	\matrC & \compC\\
+% 	\matrC & \compC\\
 	\end{tabular} \\
 	\hline
 	\end{tabular}
@@ -103,11 +104,19 @@
 %%% FINAL DA CAPA
 
 \section{Introdução} 
-Relatório de aula prática com diodos para comparação de valores teóricos encontrados a partir da aplicação da dos conceitos apresentados em sala com resultados obtidos em medições de circuitos reais.
-O diodo é um componente eletrônico composto de um cristal semicondutor, geralmente silício uma estrutura cristalina na qual as extremidades são dopadas com diferentes materiais a fim de causar uma polarização nessas extremidades.
-Os diodos, no início, eram fabricados em germânio e assim foi até meados da década de 1950 quando começaram a ser fabricados em silício e assim permanecem até hoje devido sofrer menos influência da temperatura. São usados na fabricação de diodos também  o arsenieto de gálio (GaAs) que possui uma maior velocidade de operação e o fosfeto de gálio (GaP), a quantidade de fótons de luz emitida por esses materiais é bem intensa o que permite a produção de diodos emissores de luz (LED). Atualmente existe LED com diversas cores disponíveis no mercado.
-Os diodos são componentes não lineares que permitem a passagem de corrente elétrica em apenas um sentido, a saber, quando é aplicado potencial no anodo maior que uma tensão chamada VD$_{on}$ (característica de cada diodo) se medida em relação ao anodo. Esse componente apresenta uma gama de aplicações em eletrônica, inclusive em eletrônica digital na confecção de portas lógicas A aplicação mais comum e uma das mais importantes é em circuitos retificadores. Os circuitos retificadores tem como finalidade obter corrente contínua (CC), a partir de corrente alternada (CA). São muito usados na fabricação de fontes de alimentação e carregadores de celular, por exemplo. O presente relatório explora tais circuitos e testa dois tipos de circuitos retificadores, os retificadores de meia onda e os retificadores de onda completa.  Eles se diferem, como o nome sugere, nos ciclos da corrente alternada que aproveitam, uma vez que em retificação de meia onda apenas um semiciclo é aproveitado e em retificação de onda completa ambos os ciclos são utilizados por meio de um arranjo composto por quatro diodos denominado ponte retificadora.
+Relatório de aula prática com amplificadores operacionais. Serão montados circuitos retificação valores teóricos encontrados a partir da aplicação dos conceitos apresentados em sala com resultados obtidos em medições de circuitos reais.
+Um amplificador operacional ou amp op é um amplificador com ganho muito elevado, tendo dois terminais de entrada: um designado por terminal inversor(-) e o outro identificado por terminal não inversor(+) . A tensão de saída é a diferença entre as entradas (+) e (-) , multiplicado pelo ganho em malha aberta. Devido ao alto ganho, quando usado em malha aberta são circuitos geralmente chamados de comparadores. O simbolo elétrico e detalhes dos terminais comuns em amp op são  mostrados na figura \ref{pinout}.
 
+O amplificador operacional ideal tem um ganho infinito em malha aberta, largura de banda infinita, impedância de entrada infinita, impedância de saída nula e nenhum ruído, assim como offset de entrada é zero (exatamente 0 V na saída quando as duas entradas forem exatamente iguais) e nenhuma interferência térmica. Os circuitos integrados de amp ops utilizando MOSFETs são os que mais se aproximam destes valores ideais em limites de largura de banda.
+
+\begin{figure}[!ht]
+\label{pinout}
+\includegraphics[width=0.5\linewidth]{pinout.png}
+\caption{símbolo elétrico e detalhes da pinagem comum entre amplificadores operacionais}
+(V+) entrada não-inversora; (V-) entrada inversora; (Vout) saída (VS+) alimentação positiva; (VS-) alimentação negativa
+\end{figure}
+
+Os pinos de alimentação (VS+ e VS- podem ser nomeados de diferentes formas. Ver pinos de alimentação dos CIs. Para amp ops baseados em tecnologia FET, o positivo, ou alimentação de dreno comum é chamada do VDD e o negativo, ou alimentação de fonte comum é chamado de VSS. Para amp ops baseados em TJB (BJT), o pino VS+ torna-se VCC e o pino VS- torna-se VEE. Eles são muitas vezes chamados VCC+ e VCC-, ou mesmo V+ e V-, no caso de as entradas serem nomeadas diferentemente, a função permanecerá a mesma. Muitas vezes estes pinos são retirados dos esquemas elétricos para uma maior clareza, e a configuração de alimentação é dada ou previsível através do circuito.
 %Na introdução deve haver uma contextualização do assunto abordado no documento, por exemplo: se o documento for um relatório a respeito de uma aula laboratorial sobre amplificadores de tensão, deve-se fazer uma explanação sobre o contexto em que os amplificadores de tensão estão inseridos, sua importância, onde são utilizados, etc...\\
 %A introdução também deve conter um breve explicação dos conhecimentos necessários para se entender o assunto que será abordado nas demais seções.
 %Falar de diodos retificação e fabricação de fontes 
@@ -118,14 +127,12 @@ Os diodos são componentes não lineares que permitem a passagem de corrente el�
 \section{Metodologia}
 %Na metodologia deve ser feita uma explicação de toda a base teórica necessária no desenvolver do assunto do relatório. Por exemplo: se o documento for um relatório a respeito de uma aula laboratorial sobre amplificadores de tensão, na metodologia deve haver uma breve explicação sobre amplificadores de tensão e seu funcionamento básico.
 
-Foram montados os circuitos de acordo com os esquemas propostos no material de preparação para o laboratório
-conforme imagens abaixo:
+Foram montados os circuitos de acordo com os esquemas propostos no material de preparação para o laboratório conforme imagens abaixo:
 
 \begin{figure}[!ht]
 \label{meia}
 \includegraphics[width=0.5\linewidth]{meia.png}
 \caption{Circuito de retificação de meia onda}
-
 \end{figure}
 
 \begin{figure}[!ht]
@@ -146,11 +153,10 @@ Para fins de confrontação das análises feitas no circuito real, cujos dados a
 
 %Deve conter uma listagem dos materiais utilizados ao se desenvolver alguma aplicação prática.
 \begin{itemize}
-\item 1 x Resistor de 10k$\Omega$
-\item 1 x Resistor de 27$\Omega$
+\item 1 x Resistor de 10k$\Omega$*
+\item 1 x Resistor de 68k$\Omega$
 \item 4 x Diodos 1N4148
-\item 2 x Capacitor 10uF
-\item 1 x Diodo Zener*
+
 \end{itemize}
 
 * O diodo Zener não estava com o código legível. 
